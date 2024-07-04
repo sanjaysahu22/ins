@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/stylesheets/profile.css">
+</head>
+<body>
+  <header>
+
+    <div class="container">
+  
+      <div class="profile">
+  
+        <div class="profile-image">
+  
+          <img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces" alt="">
+  
+        </div>
+  
+        <div class="profile-user-settings">
+  
+          <h1 class="profile-user-name"><%= user.username %></h1>
+  
+          <a href="/edit" class="btn profile-edit-btn">Edit Profile</a>
+  
+          <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
+  
+        </div>
+  
+        <div class="profile-stats">
+  
+          <ul>
+            <li><span class="profile-stat-count"><%= (user.posts.length) %></span> posts</li>
+            <li><span class="profile-stat-count"><%= (user.followers.length) %></span> followers</li>
+            <li><span class="profile-stat-count"><%= (user.following.length) %></span> following</li>
+          </ul>
+  
+        </div>
+  
+        <div class="profile-bio">
+  
+          <p><span class="profile-real-name"><%= user.name %></span> <%= (user.bio) %></p>
+  
+        </div>
+  
+      </div>
+      <!-- End of profile section -->
+  
+    </div>
+    <!-- End of container -->
+  
+  </header>
+  
+  <main>
+  
+    <div class="container">
+  
+      <div class="gallery">
+        <% posts.forEach((post)=>{  %>
+  
+        <div class="gallery-item" tabindex="0">
+  
+          <img src="<%= post.imgText %>" class="gallery-image" alt="">
+  
+          <div class="gallery-item-info">
+  
+            <ul>
+              <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i><%= post.like.length %></li>
+            </ul>
+  
+          </div>
+          <% }) %>
+        </div>
+  
+      
+  
+  </main>
+</body>
+</html>

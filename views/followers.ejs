@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/followers.css">
+    <title>Followers</title>
+</head>
+
+<body>
+    <div class="container">
+        <% allUser.forEach((users) => { %>
+            <div class="box">
+                <img src="https://media.istockphoto.com/id/1480277003/photo/close-up-image-of-indian-man-taking-selfie-with-phone-camera-holding-mobile-up-and-looking.jpg?s=2048x2048&w=is&k=20&c=w4uQZwFQoSoq-rFVpdqo2rjMefrxTRpqaEOqRiIH5JQ=" class="image">
+                <h3 class="title"><%= users.username %></h3>
+                <h3 class="title2"><%= users.name %></h3>
+                <form method="post" action="/followBtn">
+                    <input type="hidden" name="id" class="inp" value="<%= users._id %>">
+                    <button class="followbutton" type="submit">Follow</button>
+                </form>
+            </div>
+        <% }) %>
+    </div>
+</body>
+
+</html>
