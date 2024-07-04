@@ -1,12 +1,11 @@
-var express = require("express");
-var router = express.Router();
 const mongoose = require("mongoose");
 const plm = require("passport-local-mongoose");
-mongoose.connect("mongodb://127.0.0.1:27017/insta-clone");
-const userSchema = mongoose.Schema({
+
+const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
+    unique: true,
   },
   name: {
     type: String,
@@ -22,29 +21,28 @@ const userSchema = mongoose.Schema({
       ref: "post",
     },
   ],
-  password: {
-    type: String,
-  },
   following: [
     {
-     type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "user",
-      default:[]
-
     },
   ],
   followers: [
-  {  type: mongoose.Schema.Types.ObjectId,
+    {
+      type: mongoose.Schema.Types.ObjectId,
       ref: "user",
-    default:[]}
+    },
   ],
-
   bio: {
     type: String,
   },
-  porfile_pic: {
+  profile_pic: {
     type: String,
   },
 });
+
 userSchema.plugin(plm);
-module.exports = mongoose.model("user", userSchema);
+
+const User = mongoose.model("user", userSchema);
+
+module.exports = User;
